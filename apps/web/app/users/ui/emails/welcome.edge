@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vérification de ton compte</title>
+  <style>
+    body { margin: 0; padding: 0; background-color: #f4f7f6; -webkit-text-size-adjust: 100%; }
+    .email-wrapper { max-width: 600px; margin: 20px auto; background-color: #f4f7f6; }
+    .email-card { background: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 40px 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+    .title { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 32px; font-weight: 800; color: #2d3748; margin-bottom: 10px; }
+    .subtitle { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 16px; color: #718096; margin-bottom: 20px; line-height: 1.5; }
+
+    /* Style pour l'image */
+    .hero-image { width: 100%; max-width: 300px; height: auto; margin: 20px auto; display: block; border-radius: 4px; }
+
+    .button-wrapper { margin: 30px 0; }
+    .button-wrapper a { display: inline-block; background: #5a67d8; color: #ffffff; font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; padding: 18px 35px; border-radius: 6px; text-decoration: none; }
+    .message { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #a0aec0; padding: 20px; font-style: italic; }
+    .footer { padding: 20px; text-align: center; font-family: Arial, sans-serif; font-size: 11px; color: #cbd5e0; }
+  </style>
+</head>
+<body>
+<div class="email-wrapper">
+  <div class="email-card">
+    <div class="title">
+      {{ title || 'Bienvenue mon Loustic' }}
+    </div>
+
+    <div class="subtitle">
+      Hep, tu veux accéder à toute la plateforme ?<br>
+      Je sais que t'es pas à l'Efrei mais j'ai pas encore les preuves...
+    </div>
+
+    <img
+      src="https://res.cloudinary.com/dqsvycncf/image/upload/v1765990107/Image_22_from_Figma_vyaniv.png"
+      alt="Illustration de bienvenue"
+      class="hero-image"
+    />
+
+    <div class="button-wrapper">
+      <a href="{{ verificationUrl }}">ACTIVER MON COMPTE</a>
+    </div>
+
+    <div class="message">
+      Si tu n'as rien demandé, ignore ce superbe email.
+    </div>
+  </div>
+
+  <div class="footer">
+    Envoyé avec ❤️ et beaucoup trop d'amour pour toi (on t'aime).
+  </div>
+</div>
+</body>
+</html>

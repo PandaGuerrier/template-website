@@ -1,0 +1,51 @@
+{
+  "name": "laurent-web",
+  "version": "0.0.2",
+  "private": true,
+  "licence": "MIT",
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "docker:prod": "docker compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d"
+  },
+  "devDependencies": {
+    "@workspace/eslint-config": "workspace:*",
+    "@workspace/typescript-config": "workspace:*",
+    "prettier": "^3.6.2",
+    "turbo": "^2.5.8",
+    "typescript": "~5.9.3"
+  },
+  "packageManager": "pnpm@10.18.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "pnpm": {
+    "overrides": {
+      "string-width>strip-ansi": "^6.0.1",
+      "react": "^19.1.0",
+      "react-dom": "^19.1.0"
+    }
+  },
+  "dependencies": {
+    "@adonisjs/transmit-client": "^1.0.0",
+    "@radix-ui/react-switch": "^1.2.6",
+    "axios": "^1.13.2",
+    "class-variance-authority": "^0.7.1",
+    "date-fns": "^4.1.0",
+    "dokploy.js": "^1.0.2",
+    "emblor": "^1.4.8",
+    "framer-motion": "^12.23.24",
+    "gsap": "^3.13.0",
+    "i": "^0.3.7",
+    "ogl": "^1.0.11",
+    "react": "^19.2.0",
+    "react-day-picker": "^9.13.0",
+    "socket.io": "^4.8.3",
+    "socket.io-client": "^4.8.3",
+    "three": "^0.181.2",
+    "web": "^0.0.2",
+    "web-haptics": "^0.0.6"
+  }
+}

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      {{ subject }}
+    </title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f6f7fb;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+      }
+
+      .email-wrapper {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #f6f7fb;
+      }
+
+      .email-card {
+        background: #ffffff;
+        border: 1px solid #e6e8ef;
+        border-radius: 8px;
+        padding: 24px;
+        text-align: left;
+      }
+
+      .title {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 28px;
+        font-weight: 800;
+        line-height: 1.2;
+        color: #0f172a;
+        padding: 8px 16px 8px;
+        text-align: left;
+      }
+
+      .subtitle {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #334155;
+        padding: 0 16px 16px;
+        text-align: left;
+      }
+
+      .button-wrapper {
+        padding: 24px 16px 24px;
+        text-align: left;
+      }
+
+      .button-wrapper a {
+        display: inline-block;
+        background: #2f67f6; /* primary */
+        color: #ffffff;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 15px;
+        padding: 12px 20px;
+        border-radius: 6px;
+        text-decoration: none;
+      }
+
+      .email-footer {
+        padding: 16px 0 24px;
+        text-align: center;
+      }
+
+      .email-footer .footer-text {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 12px;
+        font-weight: 300;
+        color: #64748b;
+        text-align: center;
+      }
+
+      @media only screen and (max-width: 480px) {
+        .email-wrapper {
+          width: 100% !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="email-wrapper">
+      <div class="email-card">
+        <div class="title">
+          {{ title }}
+        </div>
+        <div class="subtitle">
+          {{ subtitle }}
+        </div>
+        <div class="button-wrapper">
+          <a href="{{ welcomeUrl }}" target="_blank">{{ actionBtn }}</a>
+        </div>
+      </div>
+
+      <div class="email-footer">
+        <div class="footer-text">
+          <a href="https://juleslofficial.fr" style="color:#2f67f6;text-decoration:none;">juleslofficial.fr</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
