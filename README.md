@@ -1,111 +1,94 @@
-# ExprEfrei
+# Template Website
 
-ExprEfrei est une plateforme sociale et communautaire moderne, conçue pour faciliter l'échange et l'expression au sein de l'Efrei.
+Boilerplate AdonisJS v6 + React + Inertia.js avec authentification, gestion des utilisateurs et système de rôles & permissions intégré.
 
-## 🚀 Technologies
+## Stack
 
-Ce projet utilise une stack moderne et performante :
+- **Backend :** [AdonisJS v6](https://adonisjs.com/)
+- **Frontend :** [React 19](https://react.dev/) + [Inertia.js](https://inertiajs.com/)
+- **Styling :** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Base de données :** [PostgreSQL](https://www.postgresql.org/)
+- **Monorepo :** [TurboRepo](https://turbo.build/)
+- **Infrastructure :** [Docker](https://www.docker.com/)
 
-*   **Backend Framework :** [AdonisJS v6](https://adonisjs.com/)
-*   **Frontend Library :** [React](https://react.dev/)
-*   **Glue :** [Inertia.js](https://inertiajs.com/)
-*   **Styling :** [TailwindCSS v4](https://tailwindcss.com/)
-*   **Database :** [PostgreSQL](https://www.postgresql.org/) (avec pgvector)
-*   **Cache/Queue :** [Redis](https://redis.io/)
-*   **Monorepo :** [TurboRepo](https://turbo.build/)
-*   **Infrastructure :** [Docker](https://www.docker.com/)
+## Fonctionnalités incluses
 
-## ✨ Fonctionnalités
+- **Auth complète** — inscription, connexion, déconnexion, réinitialisation de mot de passe, vérification email
+- **Gestion des utilisateurs** — CRUD, ban/unban, impersonation admin, invitation par email
+- **Rôles & Permissions** — système CASL avec éditeur de rôles dans le dashboard
+- **Dashboard admin** — gestion des utilisateurs et des rôles
+- **Paramètres utilisateur** — profil, mot de passe, tokens API
+- **i18n** — support multilingue (FR/EN)
+- **SSR** — rendu côté serveur avec Inertia
 
-*   **Authentification et Gestion des Utilisateurs** : Inscription, connexion, réinitialisation de mot de passe, authentification sécurisée.
-*   **Système de Posts** : Création, affichage et suppression de posts.
-*   **Temps Réel** : Mises à jour en direct des interactions.
-*   **Modération** : Outils d'administration pour la gestion du contenu et des utilisateurs (bannissement, suppression).
-*   **Profile Utilisateur** : Gestion des informations personnelles.
-*   **Système de Sondages** : Sondages pour les élèves et génération de rapports pour l'administration.
+## Prérequis
 
-## 🛠️ Prérequis
+- [Node.js](https://nodejs.org/) v20+
+- [pnpm](https://pnpm.io/)
+- [Docker](https://www.docker.com/) & Docker Compose
 
-Avant de commencer, assurez-vous d'avoir installé :
+## Installation
 
-*   [Node.js](https://nodejs.org/) (v20+ recommandé)
-*   [pnpm](https://pnpm.io/)
-*   [Docker](https://www.docker.com/) & Docker Compose
+```bash
+# 1. Cloner le dépôt
+git clone <repo-url>
+cd template-website
 
-## 📦 Installation
+# 2. Installer les dépendances
+pnpm install
 
-1.  **Cloner le dépôt :**
+# 3. Variables d'environnement
+cp apps/web/.env.example apps/web/.env
 
-    ```bash
-    git clone <votre-repo-url>
-    cd ExprEfrei
-    ```
+# 4. Lancer la base de données
+docker-compose up -d
 
-2.  **Installer les dépendances :**
+# 5. Migrations + seed
+cd apps/web
+node ace migration:run
+node ace db:seed
+cd ../..
+```
 
-    ```bash
-    pnpm install
-    ```
-
-3.  **Configurer les variables d'environnement :**
-
-    Dupliquez le fichier d'exemple et ajustez les variables si nécessaire.
-
-    ```bash
-    cp apps/web/.env.example apps/web/.env
-    ```
-
-4.  **Lancer l'infrastructure (Base de données & Redis) :**
-
-    ```bash
-    docker-compose up -d
-    ```
-
-5.  **Exécuter les migrations :**
-
-    ```bash
-    cd apps/web
-    node ace migration:run
-    # ou pour injecter des données de test
-    node ace db:seed
-    cd ../..
-    ```
-
-## 🚀 Démarrage
-
-Pour lancer l'application en mode développement :
+## Démarrage
 
 ```bash
 pnpm dev
 ```
 
-L'application sera accessible sur `http://localhost:3333`.
+Accessible sur `http://localhost:3333`.
 
-## 📂 Structure du Projet
+Compte admin par défaut (après seed) : voir `apps/web/app/core/database/seeders/user_seeder.ts`.
 
-Ce projet est un monorepo géré par TurboRepo :
+## Structure
 
-*   `apps/web` : L'application principale (AdonisJS + React + Inertia).
-*   `packages/ui` : Librairie de composants partagée (React + Tailwind).
-*   `packages/eslint-config` : Configuration ESLint partagée.
-*   `packages/typescript-config` : Configuration TypeScript partagée.
+```
+template-website/
+├── apps/
+│   └── web/                  # Application AdonisJS
+│       ├── app/
+│       │   ├── auth/         # Authentification
+│       │   ├── users/        # Utilisateurs, rôles, ban, tokens
+│       │   ├── dashboard/    # Admin dashboard (users, roles)
+│       │   └── common/       # Composants partagés, layout
+│       ├── app/core/
+│       │   └── database/     # Migrations & seeders
+│       └── config/           # Configuration AdonisJS
+└── packages/
+    ├── ui/                   # Librairie de composants (shadcn/ui)
+    ├── eslint-config/
+    └── typescript-config/
+```
 
-## 🤝 Contribution
+## Routes principales
 
-Les contributions sont les bienvenues ! Pour les tâches à venir, consultez le fichier `todo.md`.
-
-## ⚖️ Licence et Droits d'Utilisation
-
-Ce projet est protégé par le droit d'auteur. Contrairement à de nombreux projets sur GitHub, **ce code n'est PAS Open Source** (au sens MIT/GPL).
-
-**✅ Ce que vous POUVEZ faire :**
-* Consulter le code pour comprendre son fonctionnement (transparence).
-* Télécharger et lancer le projet **localement** pour le tester.
-* Copier de petits extraits de code (snippets, fonctions utilitaires) pour vos propres projets personnels ou éducatifs.
-
-**❌ Ce qu'il est STRICTEMENT INTERDIT de faire :**
-* **Redéployer ce site** en production (publicement) sur un autre serveur/domaine.
-* Utiliser le nom **"Expr'efrei"**, son logo ou son identité visuelle.
-* Copier l'intégralité ou une partie substantielle du projet pour créer un service concurrent.
-
-> ⚠️ **Note légale :** Le code est mis à disposition sous une licence **"Source Available"** restrictive. Tout usage commercial ou redéploiement non autorisé constitue une violation de la propriété intellectuelle. Voir le fichier [LICENSE](./LICENSE) pour le texte juridique complet.
+| Route | Description |
+|---|---|
+| `/login` | Connexion |
+| `/sign-up` | Inscription |
+| `/forgot-password` | Réinitialisation mot de passe |
+| `/dashboard/users` | Gestion des utilisateurs (admin) |
+| `/dashboard/admin/roles` | Gestion des rôles (admin) |
+| `/settings/profile` | Paramètres du profil |
+| `/settings/password` | Changement de mot de passe |
+| `/settings/tokens` | Tokens API |
