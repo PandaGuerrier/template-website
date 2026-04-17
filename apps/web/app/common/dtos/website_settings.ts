@@ -14,4 +14,12 @@ export default class WebsiteSettingsDto extends BaseDto {
     this.maintenanceMessage = model.maintenanceMessage
     this.maintenanceEndTime = model.maintenanceEndTime
   }
+
+  toJSON() {
+    return {
+      isMaintenance: this.isMaintenance,
+      maintenanceMessage: this.maintenanceMessage,
+      maintenanceEndTime: this.maintenanceEndTime ? this.maintenanceEndTime.toISO() : null,
+    }
+  }
 }
